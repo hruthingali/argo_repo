@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budgetledger
+  labels:
+    app: budgetledger
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: budgetledger
+  template:
+    metadata:
+      labels:
+        app: budgetledger
+    spec:
+      containers:
+        - name: budgetledger
+          image: IMAGE_PLACEHOLDER
+          ports:
+            - containerPort: 80
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://database-1.c9ke46ewy3ly.us-east-1.rds.amazonaws.com:3306/db
+            - name: SPRING_DATASOURCE_USERNAME
+              value: admin
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: adminadmin
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+              value: org.hibernate.dialect.MySQL8Dialect
