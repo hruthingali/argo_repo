@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: budgetledger
+  namespace: argocd
   labels:
     app: budgetledger
 spec:
@@ -16,7 +22,7 @@ spec:
     spec:
       containers:
         - name: budgetledger
-          image: IMAGE_PLACEHOLDER
+          image: IMAGE_PLACEHOLDER  # Replace with your actual image name
           ports:
             - containerPort: 80
           env:
