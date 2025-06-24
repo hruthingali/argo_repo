@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: budgetledger-service
+  name: expense-track-service
 spec:
   selector:
-    app: budgetledger
+    app: expense-tracker
   ports:
     - protocol: TCP
       port: 80
