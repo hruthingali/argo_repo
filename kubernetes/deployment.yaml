@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: budgetledger
-          image: 047719652562.dkr.ecr.us-east-1.amazonaws.com/capstone_ecr
+          image: 047719652562.dkr.ecr.us-east-1.amazonaws.com/capstone_ecr:latest2
           ports:
             - containerPort: 8080
           env:
