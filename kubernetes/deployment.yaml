@@ -1,13 +1,7 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: argocd
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: budgetledger
-  namespace: argocd
   labels:
     app: budgetledger
 spec:
@@ -22,7 +16,7 @@ spec:
     spec:
       containers:
         - name: budgetledger
-          image: IMAGE_PLACEHOLDER  # Replace with your actual image name
+          image: IMAGE_PLACEHOLDER
           ports:
             - containerPort: 80
           env:
@@ -34,3 +28,15 @@ spec:
               value: adminadmin
             - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
               value: org.hibernate.dialect.MySQL8Dialect
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
