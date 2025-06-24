@@ -18,7 +18,7 @@ spec:
         - name: budgetledger
           image: 047719652562.dkr.ecr.us-east-1.amazonaws.com/capstone_ecr
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:mysql://database-1.c9ke46ewy3ly.us-east-1.rds.amazonaws.com:3306/db
